@@ -1,0 +1,31 @@
+package com.example.ProjectCamunda.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Embeddable
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class CustomerDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "customer_name")
+    private String name;
+
+    @Column(name = "customer_type")
+    private String customerType;
+
+    @Column(name = "mobile_number")
+    private String mobileNumber;
+
+    private int pincode;
+}
