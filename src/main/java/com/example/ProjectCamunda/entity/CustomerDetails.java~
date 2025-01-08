@@ -6,37 +6,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Embeddable
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "orders")
-public class Order {
+public class CustomerDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "item")
-    private String item;
-
-    @Column(name = "no_of_items")
-    private int noOfItems;
-
     @Column(name = "customer_name")
-    private String CustomerName;
+    private String customerName;
 
     @Column(name = "customer_type")
-    private String CustomerType;
+    private String customerType;
 
     @Column(name = "mobile_number")
-    private String MobileNumber;
+    private String mobileNumber;
 
-    private int Pincode;
+    private int pincode;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private CustomerDetails customerDetails;
-
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 }

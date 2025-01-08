@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
 
     private IOrderService iOrderService;
+    private ICustomerDetailsService iCustomerDetailsService;
+//    private IInventoryService iInventoryService;
 
     @PostMapping("/process")
     public ResponseEntity<ResponseDto> createOrder(@RequestBody OrderDto orderDto) {

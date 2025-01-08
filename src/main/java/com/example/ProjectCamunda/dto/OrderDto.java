@@ -24,5 +24,7 @@ public class OrderDto {
 
     private int Pincode;
 
+    private CustomerDetailsDto customerDetails;
+
 
 }

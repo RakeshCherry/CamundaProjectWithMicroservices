@@ -1,5 +1,7 @@
 package com.example.ProjectCamunda.dto;
 
+import com.example.ProjectCamunda.entity.CustomerDetails;
+import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -16,8 +18,9 @@ public class CustomerDetailsDto {
     private String mobileNumber;
 
     @NotBlank
-    private String name;
+    private String customerName;
 
     @NotBlank
     private String customerType;
+
 }

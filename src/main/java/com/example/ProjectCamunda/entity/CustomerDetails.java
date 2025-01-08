@@ -18,14 +18,15 @@ public class CustomerDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "customer_name")
-    private String name;
+    private String customerName;
 
-    @Column(name = "customer_type")
     private String customerType;
 
-    @Column(name = "mobile_number")
     private String mobileNumber;
 
     private int pincode;
+
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 }
