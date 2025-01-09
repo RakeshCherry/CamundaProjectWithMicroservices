@@ -1,0 +1,38 @@
+package com.example.ProjectCamunda.delegates;
+
+import com.example.ProjectCamunda.dto.InventoryDto;
+import com.example.ProjectCamunda.dto.OrderDto;
+import com.example.ProjectCamunda.entity.Inventory;
+import com.example.ProjectCamunda.entity.Order;
+import com.example.ProjectCamunda.service.IOrderService;
+import org.camunda.bpm.engine.delegate.DelegateExecution;
+import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SaveOrderDelegate implements JavaDelegate {
+
+    private final IOrderService orderService;
+
+    @Autowired
+    public SaveOrderDelegate(IOrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @Override
+    public void execute(DelegateExecution execution) throws Exception {
+        Order order = new Order();
+        execution.setVariable("order", new Order());
+        if (order == null) {
+            throw new IllegalArgumentException("Order is null");
+        }
+        orderService.createOrder(order);
+
+        Inventory inventory = new Inventory();
+        execution.setVariable("customerType", order.getCustomerType());
+        execution.setVariable("orderPrice", inventory.getPricePerUnit());
+        execution.setVariable("itemType", inventory.getItemType());
+        System.out.println("Order saved: " + order);
+    }
+}

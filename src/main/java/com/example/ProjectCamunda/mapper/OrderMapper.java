@@ -14,6 +14,7 @@ public class OrderMapper {
         orderDto.setCustomerType(order.getCustomerType());
         orderDto.setMobileNumber(order.getMobileNumber());
         orderDto.setPincode(order.getPincode());
+
         return orderDto;
     }
 

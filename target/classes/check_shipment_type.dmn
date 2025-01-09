@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_0mt8pz0" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.29.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.22.0">
+  <decision id="checkShipmentType" name="Shipment Type">
+    <decisionTable id="DecisionTable_0dieglv">
+      <input id="Input_1" label="Customer Type" camunda:inputVariable="customerType">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>customerType</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1tba79z" label="Order Price" camunda:inputVariable="orderPrice">
+        <inputExpression id="LiteralExpression_13ygutz" typeRef="double">
+          <text>orderPrice</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0v61riz" label="Item Type" camunda:inputVariable="itemType">
+        <inputExpression id="LiteralExpression_03ozlg4" typeRef="string">
+          <text>itemType</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Shipment Type" name="shipmentType" typeRef="string" />
+      <rule id="DecisionRule_0pm5ghn">
+        <inputEntry id="UnaryTests_1s18hqw">
+          <text>"VIP"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i25tia">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tbuwls">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05jzy71">
+          <text>"Express"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_181nwn1">
+        <inputEntry id="UnaryTests_1c1h06p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tw4l97">
+          <text>&gt;50000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c4uz8e">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t20yip">
+          <text>"Express"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lb0gtg">
+        <inputEntry id="UnaryTests_1v2c7an">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fm1jgk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y6xgly">
+          <text>"Electronics"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y0405w">
+          <text>"Express"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nlfuse">
+        <inputEntry id="UnaryTests_0teifrx">
+          <text>"Regular"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jl6yxj">
+          <text>&lt;=50000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u01gdi">
+          <text>"Other"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g99wxv">
+          <text>"Normal"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="checkShipmentType">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

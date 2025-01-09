@@ -1,0 +1,27 @@
+package com.example.ProjectCamunda.delegates;
+
+import com.example.ProjectCamunda.entity.Inventory;
+import com.example.ProjectCamunda.entity.Order;
+import com.example.ProjectCamunda.repository.InventoryRepository;
+import org.camunda.bpm.engine.delegate.DelegateExecution;
+import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ValidInventoryDelegate implements JavaDelegate {
+
+    @Autowired
+    private InventoryRepository inventoryRepository;
+
+    @Override
+    public void execute(DelegateExecution execution) throws Exception {
+        Order order = (Order) execution.getVariable("order");
+        Inventory inventory = inventoryRepository.findByItemName(order.getItem());
+        System.out.println("Inventory: " + inventory);
+
+        boolean isValidInventory = inventory.getInventoryBalance() >= order.getNoOfItems();
+        execution.setVariable("isValidInventory", isValidInventory);
+        System.out.println("isValidInventory: " + isValidInventory);
+    }
+}

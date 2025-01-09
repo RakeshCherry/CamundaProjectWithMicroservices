@@ -16,14 +16,6 @@ CREATE TABLE IF NOT EXISTS `inventory` (
     `inventory_balance` int NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `customer_details` (
-    `id` int AUTO_INCREMENT PRIMARY KEY,
-    `customer_name` VARCHAR(255) NOT NULL,
-    `customer_type` VARCHAR(255) NOT NULL,
-    `mobile_number` VARCHAR(255) NOT NULL,
-    `pincode` int NOT NULL
-)
-
 INSERT INTO inventory (item_name, item_type, price_per_unit, inventory_balance) VALUES
 ('Smartphone', 'Electronics', 35000.0, 500),
 ('Microwave Oven', 'Electronics', 15000.0, 120),
