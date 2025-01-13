@@ -1,10 +1,8 @@
 package com.example.ProjectCamunda.dto;
 
-import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.example.ProjectCamunda.entity.CustomerDetails;
+import com.fasterxml.classmate.AnnotationOverrides;
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,16 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderDto {
 
-    private String item;
+    private Long itemId;
+
+    private CustomerDetails customerDetails;
 
     private int noOfItems;
-
-    private String CustomerName;
-
-    private String CustomerType;
-
-    private String MobileNumber;
-
-    private int Pincode;
-
 }

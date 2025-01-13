@@ -1,9 +1,5 @@
 package com.example.ProjectCamunda.dto;
 
-import com.example.ProjectCamunda.entity.CustomerDetails;
-import jakarta.annotation.Resource;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,16 +7,13 @@ import lombok.Setter;
 @Setter
 public class CustomerDetailsDto {
 
-    @NotNull
-    private Integer pincode;
+    private String CustomerName;
 
-    @NotBlank
-    private String mobileNumber;
+    private String CustomerType;
 
-    @NotBlank
-    private String customerName;
+    private String MobileNumber;
 
-    @NotBlank
-    private String customerType;
+    private int pincode;
+
 
 }

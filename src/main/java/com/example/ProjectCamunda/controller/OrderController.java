@@ -1,20 +1,11 @@
 package com.example.ProjectCamunda.controller;
 
-import com.example.ProjectCamunda.constants.InventoryConstants;
 import com.example.ProjectCamunda.constants.OrderConstants;
-import com.example.ProjectCamunda.dto.CustomerDetailsDto;
-import com.example.ProjectCamunda.dto.InventoryDto;
-import com.example.ProjectCamunda.dto.OrderDto;
 import com.example.ProjectCamunda.dto.ResponseDto;
-import com.example.ProjectCamunda.entity.CustomerDetails;
 import com.example.ProjectCamunda.entity.Order;
-import com.example.ProjectCamunda.service.ICustomerDetailsService;
-import com.example.ProjectCamunda.service.IInventoryService;
 import com.example.ProjectCamunda.service.IOrderService;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

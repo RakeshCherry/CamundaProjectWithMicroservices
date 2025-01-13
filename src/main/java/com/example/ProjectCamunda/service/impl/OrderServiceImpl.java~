@@ -1,8 +1,8 @@
 package com.example.ProjectCamunda.service.impl;
 
+import com.example.ProjectCamunda.dto.OrderDto;
 import com.example.ProjectCamunda.entity.CustomerDetails;
 import com.example.ProjectCamunda.entity.Inventory;
-import com.example.ProjectCamunda.entity.Order;
 import com.example.ProjectCamunda.repository.InventoryRepository;
 import com.example.ProjectCamunda.repository.OrderRepository;
 import com.example.ProjectCamunda.service.IOrderService;
@@ -22,7 +22,7 @@ public class OrderServiceImpl implements IOrderService {
     private InventoryRepository inventoryRepository;
 
     @Override
-    public void createOrder(Order order) {
+    public void createOrder(OrderDto order) {
         Optional<Inventory> inventoryOptional = inventoryRepository.findById(order.getItemId());
         if (inventoryOptional.isPresent()) {
             Inventory inventory = inventoryOptional.get();

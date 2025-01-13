@@ -1,10 +1,8 @@
 package com.example.ProjectCamunda.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.Type;
 
 @Getter
 @Setter
@@ -18,25 +16,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "item")
-    private String item;
+    private Long itemId;
 
-    @Column(name = "no_of_items")
-    private int noOfItems;
-
-    @Column(name = "customer_name")
-    private String CustomerName;
-
-    @Column(name = "customer_type")
-    private String CustomerType;
-
-    @Column(name = "mobile_number")
-    private String MobileNumber;
-
-    private int Pincode;
-
-    @OneToOne
-    @JoinColumn(name = "customer_id")
+    @Embedded
     private CustomerDetails customerDetails;
 
+    private int noOfItems;
 }
