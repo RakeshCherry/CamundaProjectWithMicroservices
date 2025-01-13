@@ -22,4 +22,7 @@ public class Order {
     private CustomerDetails customerDetails;
 
     private int noOfItems;
+
+    public Order(Long itemId, Integer noOfItems) {
+    }
 }

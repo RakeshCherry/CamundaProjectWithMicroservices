@@ -23,22 +23,38 @@ public class ValidInventoryDelegate implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
-        // Get the order object from the process variables
-        Order order = (Order) execution.getVariable("order");
+        Long itemId = (Long) execution.getVariable("itemId");
+        Integer noOfItems = (Integer) execution.getVariable("noOfItems");
 
-        // Check if the inventory is valid
-        Optional<Inventory> inventoryOptional = inventoryRepository.findById(order.getItemId());
+        if (itemId == null) {
+            log.error("Order is null in ValidInventoryDelegate");
+            execution.setVariable("isValidInventory", false);
+            return;
+        }
+
+        if (noOfItems == null || noOfItems <= 0) {
+            log.error("Invalid number of items in the order: {}", noOfItems);
+            execution.setVariable("isValidInventory", false);
+            return;
+        }
+
+        Optional<Inventory> inventoryOptional = inventoryRepository.findById(itemId);
         if (inventoryOptional.isPresent()) {
             Inventory inventory = inventoryOptional.get();
-            log.info("Inventory: " + inventory.getInventoryBalance());
-            if (inventory.getInventoryBalance() < order.getNoOfItems()) {
-                execution.setVariable("isvalidInventory", false);
+
+            // Validate inventory balance against the number of items ordered
+            if (inventory.getInventoryBalance() < noOfItems) {
+                log.error("Insufficient inventory for item ID: {}. Available balance: {}, Requested: {}",
+                        itemId, inventory.getInventoryBalance(), noOfItems);
+                execution.setVariable("isValidInventory", false);
             } else {
-                execution.setVariable("isvalidInventory", true);
+                execution.setVariable("isValidInventory", true);
+                log.info("Sufficient inventory for item ID: {}", itemId);
+                log.info("Variable isValidInventory: {}", execution.getVariable("isValidInventory"));
             }
         } else {
-            log.error("Inventory not found for item ID: " + order.getItemId());
-            execution.setVariable("isvalidInventory", false);
+            log.error("Inventory not found for item ID: " + itemId);
+            execution.setVariable("isValidInventory", false);
         }
     }
 }
