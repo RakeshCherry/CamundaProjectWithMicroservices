@@ -8,7 +8,7 @@ import java.util.Map;
 public class OrderValidator {
 
     public static void validatePayload(Map<String, Object> payload) {
-        // Validate itemId
+
         if (!payload.containsKey("itemId") || payload.get("itemId") == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Item ID is required");
         }
@@ -18,14 +18,13 @@ public class OrderValidator {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Item ID must be a valid number");
         }
 
-        // Validate customerDetails
         if (!payload.containsKey("customerDetails") || payload.get("customerDetails") == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer details are required");
         }
         Map<String, Object> customerDetails = (Map<String, Object>) payload.get("customerDetails");
         validateCustomerDetails(customerDetails);
 
-        // Validate noOfItems
+
         if (!payload.containsKey("noOfItems") || payload.get("noOfItems") == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Number of items is required");
         }

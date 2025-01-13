@@ -42,7 +42,6 @@ public class ValidInventoryDelegate implements JavaDelegate {
         if (inventoryOptional.isPresent()) {
             Inventory inventory = inventoryOptional.get();
 
-            // Validate inventory balance against the number of items ordered
             if (inventory.getInventoryBalance() < noOfItems) {
                 log.error("Insufficient inventory for item ID: {}. Available balance: {}, Requested: {}",
                         itemId, inventory.getInventoryBalance(), noOfItems);

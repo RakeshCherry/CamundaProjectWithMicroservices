@@ -27,7 +27,6 @@ public class OrderRequestDto {
     private Integer noOfItems;
 
 
-    // Nested class for customer details
     public static class CustomerDetailsDto {
         @NotBlank(message = "Customer name is required")
         private String customerName;

@@ -21,7 +21,7 @@ public class OrderController {
     private final RuntimeService runtimeService;
     private final IOrderService iOrderService;
 
-    // Constructor injection for RuntimeService and IOrderService
+
     public OrderController(RuntimeService runtimeService, IOrderService iOrderService) {
         this.runtimeService = runtimeService;
         this.iOrderService = iOrderService;
@@ -32,7 +32,6 @@ public class OrderController {
 
         OrderValidator.validatePayload(payload);
 
-        // Extract variables from the payload
         Long itemId = Long.valueOf(payload.get("itemId").toString());
         Map<String, Object> customerDetailsMap = (Map<String, Object>) payload.get("customerDetails");
         Integer noOfItems = Integer.valueOf(payload.get("noOfItems").toString());
