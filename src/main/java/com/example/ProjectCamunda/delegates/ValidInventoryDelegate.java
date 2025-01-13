@@ -25,6 +25,14 @@ public class ValidInventoryDelegate implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         Long itemId = (Long) execution.getVariable("itemId");
         Integer noOfItems = (Integer) execution.getVariable("noOfItems");
+        Double pricePerUnit = (Double) execution.getVariable("pricePerUnit");
+        String itemType = (String) execution.getVariable("itemType");
+
+        execution.setVariable("pricePerUnit", pricePerUnit);
+        execution.setVariable("itemType", itemType);
+
+        log.info("Item Price per Unit: {}", pricePerUnit);
+        log.info("Item Type: {}", itemType);
 
         if (itemId == null) {
             log.error("Order is null in ValidInventoryDelegate");

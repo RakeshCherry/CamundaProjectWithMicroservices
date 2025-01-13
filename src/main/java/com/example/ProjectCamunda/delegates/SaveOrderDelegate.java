@@ -24,6 +24,8 @@ public class SaveOrderDelegate implements JavaDelegate {
         Integer noOfItems = (Integer) execution.getVariable("noOfItems");
 
         log.info("Order Details: Item ID: {}, Customer: {}, No of Items: {}", itemId, customerDetails, noOfItems);
+        execution.setVariable("customerType", customerDetails.get("customerType"));
+        log.info("Customer Type: {}", customerDetails.get("customerType"));
 
         execution.setVariable("orderSaved", true);
 

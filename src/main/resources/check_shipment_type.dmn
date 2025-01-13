@@ -7,9 +7,9 @@
           <text>customerType</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1tba79z" label="Order Price" camunda:inputVariable="orderPrice">
-        <inputExpression id="LiteralExpression_13ygutz" typeRef="double">
-          <text>orderPrice</text>
+      <input id="InputClause_1tba79z" label="Order Price" camunda:inputVariable="pricePerUnit">
+        <inputExpression id="LiteralExpression_13ygutz" typeRef="boolean">
+          <text>pricePerUnit</text>
         </inputExpression>
       </input>
       <input id="InputClause_0v61riz" label="Item Type" camunda:inputVariable="itemType">
@@ -37,7 +37,7 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1tw4l97">
-          <text>&gt;50000</text>
+          <text>&gt;50000.0</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0c4uz8e">
           <text></text>
@@ -65,7 +65,7 @@
           <text>"Regular"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jl6yxj">
-          <text>&lt;=50000</text>
+          <text>&lt;=50000.0</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0u01gdi">
           <text>"Other"</text>
