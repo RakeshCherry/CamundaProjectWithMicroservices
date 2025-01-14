@@ -14,8 +14,6 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class DummyApiPostCallDelegate implements JavaDelegate {
 
-    private static final String API_URL = "https://dummyapi.com/api/v1/postCall";
-
     @Override
     public void execute(DelegateExecution execution) throws Exception {
         log.info("Executing Dummy API Post Call");
@@ -41,10 +39,13 @@ public class DummyApiPostCallDelegate implements JavaDelegate {
         // Create entity with headers and body
         HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
 
+        // API endpoint
+        String apiUrl = "https://dummyapi.com/api/v1/postCall";
+
         try {
             // Make the POST call
             RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<String> response = restTemplate.postForEntity(API_URL, entity, String.class);
+            ResponseEntity<String> response = restTemplate.postForEntity(apiUrl, entity, String.class);
 
             // Log and store the response
             log.info("API Response: {}", response.getBody());
