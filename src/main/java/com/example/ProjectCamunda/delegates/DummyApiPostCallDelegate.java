@@ -3,58 +3,24 @@ package com.example.ProjectCamunda.delegates;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @Component
 public class DummyApiPostCallDelegate implements JavaDelegate {
 
-    private static final String API_URL = "https://dummyapi.com/api/v1/postCall";
-
     @Override
-    public void execute(DelegateExecution execution) throws Exception {
-        log.info("Executing Dummy API Post Call");
+    public void execute(DelegateExecution execution) {
+        log.info("Executing DummyApiPostCallDelegate");
 
-        String shipmentType = (String) execution.getVariable("shipmentType");
-        Long itemId = (Long) execution.getVariable("itemId");
-        Integer noOfItems = (Integer) execution.getVariable("noOfItems");
+        // Simulating the request body
+        String requestBody = "{}";
+        log.info("Request Body: {}", requestBody);
 
-        log.info("Item ID: {}", itemId);
-        log.info("Number of Items: {}", noOfItems);
-        log.info("Shipment Type: {}", shipmentType);
+        // Simulating the API response
+        String simulatedResponse = "{ \"message\": \"success\" }";
+        log.info("Simulated Response from API: {}", simulatedResponse);
 
-        // Create request body
-        String requestBody = String.format(
-                "{\"itemId\": %d, \"shipmentType\": \"%s\", \"noOfItems\": %d}",
-                itemId, shipmentType, noOfItems
-        );
-
-        // Create headers
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        // Create entity with headers and body
-        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
-
-        try {
-            // Make the POST call
-            RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<String> response = restTemplate.postForEntity(API_URL, entity, String.class);
-
-            // Log and store the response
-            log.info("API Response: {}", response.getBody());
-            execution.setVariable("apiResponse", response.getBody());
-            execution.setVariable("apiStatus", response.getStatusCodeValue());
-        } catch (Exception e) {
-            // Handle errors
-            log.error("Error during API call: {}", e.getMessage());
-            execution.setVariable("apiStatus", "FAILED");
-            execution.setVariable("apiErrorMessage", e.getMessage());
-        }
+        log.info("DummyApiPostCallDelegate executed successfully");
     }
 }

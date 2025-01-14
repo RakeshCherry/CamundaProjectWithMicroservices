@@ -65,40 +65,12 @@
           <text>"Regular"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jl6yxj">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0u01gdi">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1g99wxv">
-          <text>"Normal"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1gi4n6j">
-        <inputEntry id="UnaryTests_1kghyoz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1aw82um">
           <text>&lt;=50000.0</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0nd65c6">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0bn8sd0">
-          <text>"Normal"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1dh03a9">
-        <inputEntry id="UnaryTests_0ehnqt7">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0wix2kd">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0dgdg09">
+        <inputEntry id="UnaryTests_0u01gdi">
           <text>"Other"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1tz7i5u">
+        <outputEntry id="LiteralExpression_1g99wxv">
           <text>"Normal"</text>
         </outputEntry>
       </rule>
